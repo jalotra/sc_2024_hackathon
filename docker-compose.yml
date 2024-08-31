@@ -1,0 +1,38 @@
+---
+version: "3.9"
+services:
+    web:
+        build: .
+        ports:
+            - 5000:5000
+            - 5001:5001
+            - 5002:5002
+        depends_on:
+            - redis
+            - mysql
+        environment:
+            - HOST=0.0.0.0
+            - MYSQL_URL=mysql://agent:agent@mysql:3306/agent
+            - REDIS_URL=redis://redis:6379/0
+            - OPENAI_API_KEY=...
+    mysql:
+        image: mysql:latest
+        ports:
+            - 3306:3306
+        command: --init-file /app/init.sql
+        environment:
+            - MYSQL_ROOT_PASSWORD=mysql
+            - MYSQL_DATABASE=agent
+            - MYSQL_USER=agent
+            - MYSQL_PASSWORD=agent
+        volumes:
+            - ./data/mysql_data:/var/lib/mysql
+            - ./init.sql:/app/init.sql
+    redis:
+        image: redis:latest
+        depends_on:
+            - mysql
+        ports:
+            - 6379:6379
+        volumes:
+            - ./data/redis_data:/data

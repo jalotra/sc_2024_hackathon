@@ -1,0 +1,5 @@
+CREATE DATABASE IF NOT EXISTS agent;
+CREATE USER 'agent'@'%' IDENTIFIED BY 'agent';
+GRANT ALL PRIVILEGES ON agent.* TO 'agent'@'%';
+FLUSH PRIVILEGES;
+USE agent;

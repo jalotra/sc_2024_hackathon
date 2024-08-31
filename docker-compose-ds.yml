@@ -1,0 +1,25 @@
+---
+version: "3.9"
+services:
+    mysql:
+        image: mysql:latest
+        ports:
+            - 3306:3306
+        command: --init-file /app/init.sql
+        environment:
+            - MYSQL_ROOT_USER=root
+            - MYSQL_ROOT_PASSWORD=mysql
+            - MYSQL_DATABASE=agent
+            - MYSQL_USER=agent
+            - MYSQL_PASSWORD=agent
+        volumes:
+            - ./data/mysql_data:/var/lib/mysql
+            - ./init.sql:/app/init.sql
+    redis:
+        image: redis:latest
+        depends_on:
+            - mysql
+        ports:
+            - 6379:6379
+        volumes:
+            - ./data/redis_data:/data
