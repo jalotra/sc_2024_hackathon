@@ -22,5 +22,5 @@ if __name__ == "__main__":
     uvicorn.run(
         app,
         host=os.environ.get("HOST") or "localhost",
-        port=os.environ.get("PORT") or 5000,
+        port=int(os.environ.get("PORT")) or 5000,
     )

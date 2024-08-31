@@ -4,7 +4,7 @@ services:
     web:
         build: .
         ports:
-            - 5000:5000
+            - 39001:39001
             - 5001:5001
             - 5002:5002
         depends_on:
@@ -12,6 +12,7 @@ services:
             - mysql
         environment:
             - HOST=0.0.0.0
+            - PORT=39001
             - MYSQL_URL=mysql://agent:agent@mysql:3306/agent
             - REDIS_URL=redis://redis:6379/0
             - OPENAI_API_KEY=...

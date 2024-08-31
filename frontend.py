@@ -7,7 +7,7 @@ st.title("RAG application Using RAPTOR")
 st.divider()
 
 BACKEND_HOST = "localhost"
-BACKEND_PORT = "5000"
+BACKEND_PORT = "39001"
 
 
 def get_session_state():
@@ -84,7 +84,7 @@ with st.form("upload-form", clear_on_submit=False):
 st.header("Chat on top of uploaded files here")
 if "tree_id" in session_state.keys():
     st.text_area(f"Tree Id is : {session_state["tree_id"]}")
-messages = st.container(height=300)
+messages = st.container(height=1800)
 if prompt := st.chat_input("Enter Question :"):
     messages.chat_message("user").write(prompt)
     messages.chat_message("assistant").write(
