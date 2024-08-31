@@ -19,11 +19,10 @@
 - Streamlit : Simple UI <br/>
 
 ## Want to see it in action ? 
-```
 1. you would need a OPEN_API_KEY env var, see docker-compose.yml for details. 
 2. do a docker compose -f docker-compose.yml up 
-3. goto localhost:5001 to see frontend. 
-```
+3. goto http://localhost:5001 to see frontend and http://localhost:39001/docs to see backend apis
+
 
 ## HLD
 ![hld](./images/hld.png)
